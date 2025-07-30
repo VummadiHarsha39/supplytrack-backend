@@ -243,7 +243,7 @@ The application implements granular role-based access control using Spring Secur
 Feel free to connect with me for questions, collaborations, or discussions about this project!
 
 -   GitHub: [VummadiHarsha39](https://github.com/VummadiHarsha39)
--   LinkedIn: [Your LinkedIn Profile URL Here] (https://www.linkedin.com/in/harsha-vardhan-reddy-vummadi-63b464143/)
+-   LinkedIn: [ LinkedIn Profile ] (https://www.linkedin.com/in/harsha-vardhan-reddy-vummadi-63b464143/)
 
 ## 9. License
 

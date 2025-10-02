@@ -227,25 +227,16 @@ The application implements granular role-based access control using Spring Secur
 -   **`ROLE_FARMER` / `ROLE_DISTRIBUTOR`**: Authorized to `handoverProduct`.
 -   All other authenticated users (including `ROLE_RESTAURANT` and `ROLE_ADMIN`) and actions (like viewing protected data, logging generic events, tracing products, fetching owned products, or getting QR code data) are covered by general authentication rules. Unauthorized attempts to restricted endpoints will result in a `403 Forbidden` response.
 
-## 7. Future Enhancements
 
--   **JWT (JSON Web Token) Authentication:** Replace HTTP Basic Auth for a more stateless, scalable, and secure token-based authentication mechanism.
--   **Advanced Role-Based UI:** Dynamically show/hide frontend UI elements (buttons, forms, navigation items) based on the logged-in user's specific role.
--   **Product Image Uploads:** Integrate image storage (e.g., AWS S3) for product photos, enhancing visual traceability.
--   **Notifications/Alerts:** Implement a real-time notification system (e.g., using WebSockets) for supply chain events.
--   **Mapping/Geolocation:** Integrate interactive maps to visualize product current locations and historical routes.
--   **Batch Operations:** Develop functionalities for logging events or performing handovers for multiple products simultaneously.
--   **Advanced Search & Filtering:** Implement more robust search, filtering, and sorting capabilities for products and events.
--   **Admin Dashboard:** Create a dedicated administrative interface for user management, system health monitoring, and data oversight.
 
-## 8. Contact
+## 7. Contact
 
 Feel free to connect with me for questions, collaborations, or discussions about this project!
 
 -   GitHub: [VummadiHarsha39](https://github.com/VummadiHarsha39)
 -   LinkedIn: [ LinkedIn Profile ](https://www.linkedin.com/in/harsha-vardhan-reddy-vummadi-63b464143/)
 
-## 9. License
+## 8. License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

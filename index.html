@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupplyTrack - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            padding: 60px 40px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 50px;
+            letter-spacing: 0.5px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .diagram-section {
+            flex: 0 0 65%;
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .info-section {
+            flex: 0 0 35%;
+            background-color: #0a0a0a;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #222;
+        }
+
+        /* Architecture Diagram Styles */
+        .architecture-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .layer-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .layer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            padding: 20px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-family: 'Courier New', 'Consolas', monospace;
+        }
+
+        .layer-users {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px;
+        }
+
+        .user-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .user-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .layer-frontend {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+
+        .layer-backend {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #333;
+            padding: 15px;
+        }
+
+        .backend-components {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .component-box {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 10px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .layer-database {
+            background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+            color: #333;
+        }
+
+        .arrow-right {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .flow-label {
+            font-size: 0.7rem;
+            color: #666;
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .info-value {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        .github-link {
+            color: #667eea;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .workflow-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+
+        .workflow-box div {
+            color: #333;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .diagram-section,
+            .info-section {
+                flex: 1 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SupplyTrack – Modular Food Supply Chain Tracking System</h1>
+        
+        <div class="content-wrapper">
+            <div class="diagram-section">
+                <div class="architecture-flow">
+                    <div class="layer-column" style="flex: 0.9;">
+                        <div class="layer layer-users">
+                            Users
+                            <div class="user-grid">
+                                <div class="user-box">Farmer</div>
+                                <div class="user-box">Distributor</div>
+                                <div class="user-box">Restaurant</div>
+                                <div class="user-box">Admin</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-right">→</div>
+
+                    <div class="layer-column">
+                        <div class="layer layer-frontend">
+                            Frontend<br>
+                            <small style="font-weight: 400; font-size: 0.8rem;">React + Ant Design</small>
+                            <div class="flow-label">User Interface</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-right">→</div>
+
+                    <div class="layer-column" style="flex: 1.2;">
+                        <div class="layer layer-backend">
+                            Backend<br>
+                            <small style="font-weight: 400; font-size: 0.8rem;">Spring Boot</small>
+                            <div class="backend-components">
+                                <div class="component-box">Controllers</div>
+                                <div class="component-box">Services</div>
+                                <div class="component-box">Repositories</div>
+                                <div class="component-box">Security</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-right">→</div>
+
+                    <div class="layer-column">
+                        <div class="layer layer-database">
+                            Database<br>
+                            <small style="font-weight: 400; font-size: 0.8rem;">PostgreSQL 17</small>
+                            <div class="flow-label">Data Storage</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-box">
+                    <div>
+                        <strong style="color: #667eea;">System Flow:</strong> Users authenticate via role-based login → React frontend sends API requests → Spring Boot Controllers validate and route requests → Services execute business logic (product creation, event logging, ownership transfer) → Repositories interact with PostgreSQL → Secure responses returned to frontend → QR codes generated for instant product traceability
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Project information</h2>
+                
+                <div class="info-item">
+                    <div class="info-label">Technologies:</div>
+                    <div class="info-value">Spring Boot, Spring Security, PostgreSQL, React, Ant Design, Vite, Axios, React Router, html5-qrcode, Maven</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Languages:</div>
+                    <div class="info-value">Java 17, JavaScript, SQL</div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">Source code:</div>
+                    <div class="info-value">
+                        <a href="https://github.com/VummadiHarsha39/supplytrack-backend" class="github-link" target="_blank">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            Backend Repository
+                        </a>
+                        <br><br>
+                        <a href="https://github.com/VummadiHarsha39/supplytrack-frontend" class="github-link" target="_blank">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            Frontend Repository
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-label">License:</div>
+                    <div class="info-value">MIT</div>
+                </div>
+
+                <div class="info-item" style="margin-top: 35px;">
+                    <ul>
+                        <li><strong>Role-Based Access Control:</strong> Implemented Spring Security with FARMER, DISTRIBUTOR, RESTAURANT, and ADMIN roles ensuring granular permissions and 403 Forbidden responses for unauthorized actions.</li>
+                        
+                        <li><strong>Product Lifecycle Management:</strong> Complete CRUD operations for food products with event logging (SHIPPED, RECEIVED, QUALITY_CHECK, DAMAGED, SOLD) and secure ownership transfers between authorized entities.</li>
+                        
+                        <li><strong>QR Code Integration:</strong> Each product ID encoded into QR codes enabling instant traceability lookups via mobile scan, providing complete lifecycle history from farm to fork.</li>
+                        
+                        <li><strong>Three-Layer Architecture:</strong> Clean separation with Controllers handling API requests, Services managing business logic, and Repositories handling PostgreSQL interactions via Spring Data JDBC.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
